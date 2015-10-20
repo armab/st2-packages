@@ -2,6 +2,11 @@ sudo: required
 services:
   - docker
 
+env:
+  - PLATFORM=debian
+  - PLATFORM=ubuntu
+  - PLATFORM=centos7
+
 cache:
   directories:
     - $HOME/.cache/pip/
@@ -16,4 +21,4 @@ install:
   - sudo pip install docker-compose
 
 script:
-  - docker-compose up debian
+  - docker-compose up ${PLATFORM}
