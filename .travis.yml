@@ -3,22 +3,22 @@ services:
   - docker
 
 env:
-  - PLATFORM=debian
-  - PLATFORM=ubuntu
-  - PLATFORM=centos7
+  - DISTRO=debian
+  - DISTRO=ubuntu
+  - DISTRO=centos7
 
 cache:
   directories:
-    - $HOME/.cache/pip/
-    - /var/lib/docker/
+    - $HOME/.cache/pip
+    - /var/lib/docker
 
 before_install:
   - sudo service postgresql stop
   - sudo service rabbitmq-server stop
 
 install:
-  - sudo pip install -U pip
-  - sudo pip install docker-compose
+  - sudo -H pip install --upgrade pip
+  - sudo -H pip install docker-compose
 
 script:
-  - docker-compose up ${PLATFORM}
+  - docker-compose up ${DISTRO}
