@@ -9,7 +9,7 @@ cache:
 
 before_install:
   - sudo service postgresql stop
-  - sudo service mongod stop
+  - sudo service mongodb stop
   - sudo service rabbitmq-server stop
 
 install:
