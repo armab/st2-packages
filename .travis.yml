@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+cache:
+  directories:
+    - $HOME/.cache/pip/
+    - /var/lib/docker/
+
+install:
+  - pip install -U pip
+  - pip install docker-compose
+
+script:
+  - docker-compose up debian
