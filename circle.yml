@@ -1,8 +1,6 @@
 machine:
-  environment:
-    DISTRO_0: debian
-    DISTRO_1: ubuntu
-    DISTRO_2: centos7
+#  environment:
+#    DISTROS:
 # update Docker manually
   pre:
     - sudo cp /home/ubuntu/.ssh/config /root/.ssh/config
@@ -17,20 +15,22 @@ dependencies:
     - ~/docker
   pre:
     - mkdir -p ~/docker
+    - echo 'export DISTROS=(debian ubuntu centos7)' >> /etc/environment
+    - source /etc/environment
   override:
+    - echo $DISTROS
+    - echo ${DISTROS[1]}
+    - exit 1
     - sudo -H pip install --upgrade pip
     - sudo -H pip install docker-compose
     - docker-compose version
     #- if [[ -e ~/docker/postgres.tar ]]; then docker load -i ~/docker/postgres.tar; fi
     #- if [[ -e ~/docker/mongo.tar ]]; then docker load -i ~/docker/mongo.tar; fi
     #- if [[ -e ~/docker/rabbitmq:management.tar ]]; then docker load -i ~/docker/rabbitmq:management.tar; fi
-    - sudo service docker stop && sudo cp -Ra ~/docker/. /var/lib/docker/ && sudo service docker start
     - docker-compose pull ${DISTRO_0}
     #- docker save postgres > ~/docker/postgres.tar
     #- docker save mongo > ~/docker/mongo.tar
     #- docker save rabbitmq:management > ~/docker/rabbitmq:management.tar
-    - sudo service docker stop && sudo cp -Ra /var/lib/docker/. ~/docker/ && sudo service docker start
-    - exit 1
 
 database:
   override:
@@ -42,5 +42,5 @@ test:
   override:
     - docker-compose up ${DISTRO_0}
   post:
-    - mkdir ${CIRCLE_ARTIFACTS}/${DISTRO_0}
+    - mkdir ${CIRCLE_ARTIFACTS}/${DISTRO_$CIRCLE_NODE_INDEX}
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/${DISTRO_0}
