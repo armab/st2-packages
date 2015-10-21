@@ -1,6 +1,8 @@
 machine:
   pre:
     - sudo cp /home/ubuntu/.ssh/config /root/.ssh/config
+  services:
+    - docker
 
 dependencies:
   cache_directories:
@@ -12,3 +14,4 @@ dependencies:
 test:
   override:
     - docker-compose up debian
+
