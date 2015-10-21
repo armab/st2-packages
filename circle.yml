@@ -16,10 +16,14 @@ dependencies:
   cache_directories:
     - ~/.cache/pip/
     - /var/lib/docker/
+    - ~/docker
+  pre:
+    - mkdir -p ~/docker
   override:
     - sudo -H pip install --upgrade pip
     - sudo -H pip install docker-compose
     - docker-compose version
+    - if [[ -e ~/docker/postgres.tar ]]; then docker load -i ~/docker/postgres.tar; fi
 
 database:
   override:
@@ -31,6 +35,6 @@ test:
   override:
     - docker-compose up ${DISTRO_0}
   post:
+    - docker save postgres > ~/docker/postgres.tar
     - mkdir ${CIRCLE_ARTIFACTS}/${DISTRO_0}
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/${DISTRO_0}
-    - tree ${CIRCLE_ARTIFACTS}
