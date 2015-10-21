@@ -6,8 +6,8 @@ dependencies:
   cache_directories:
     - ~/.cache/pip/
   override:
-    - sudo pip install --upgrade pip
-    - sudo pip install docker-compose
+    - sudo -H pip install --upgrade pip
+    - sudo -H pip install docker-compose
 
 test:
   override:
