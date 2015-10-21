@@ -14,8 +14,6 @@ machine:
 
 dependencies:
   cache_directories:
-    - ~/.cache/pip/
-    - /var/lib/docker/
     - ~/docker
   pre:
     - mkdir -p ~/docker
@@ -23,9 +21,9 @@ dependencies:
     - sudo -H pip install --upgrade pip
     - sudo -H pip install docker-compose
     - docker-compose version
-#    - if [[ -e ~/docker/postgres.tar ]]; then docker load -i ~/docker/postgres.tar; fi
-#    - if [[ -e ~/docker/mongo.tar ]]; then docker load -i ~/docker/mongo.tar; fi
-#    - if [[ -e ~/docker/rabbitmq:management.tar ]]; then docker load -i ~/docker/rabbitmq:management.tar; fi
+    - if [[ -e ~/docker/postgres.tar ]]; then docker load -i ~/docker/postgres.tar; fi
+    - if [[ -e ~/docker/mongo.tar ]]; then docker load -i ~/docker/mongo.tar; fi
+    - if [[ -e ~/docker/rabbitmq:management.tar ]]; then docker load -i ~/docker/rabbitmq:management.tar; fi
     - docker-compose pull ${DISTRO_0}
     - docker save postgres > ~/docker/postgres.tar
     - docker save mongo > ~/docker/mongo.tar
