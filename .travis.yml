@@ -22,3 +22,7 @@ install:
 
 script:
   - docker-compose up ${DISTRO}
+
+# travis_after_all:
+# TODO: we need to upload artifacts as final step when ALL parallel builds were successful
+# See: https://github.com/travis-ci/travis-ci/issues/929
