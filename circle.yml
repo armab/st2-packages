@@ -1,10 +1,10 @@
 machine:
   environment:
-    foo: bar
-    baz: 123
-    DISTROS: (debian ubuntu centos7)
+    DISTRO_0: debian
+    DISTRO_1: ubuntu
+    DISTRO_2: centos7
+# update Docker manually
   pre:
-    - export DISTROS=(debian ubuntu centos7)
     - sudo cp /home/ubuntu/.ssh/config /root/.ssh/config
     - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.8.3-circleci'
     - sudo chmod 0755 /usr/bin/docker
@@ -13,12 +13,6 @@ machine:
 #    - docker
 
 dependencies:
-  pre:
-    - printenv
-    - echo ${DISTROS}
-    - echo ${DISTROS[0]}
-    - echo ${DISTROS[1]}
-    - echo ${DISTROS[2]}
   cache_directories:
     - ~/.cache/pip/
     - /var/lib/docker/
@@ -35,7 +29,7 @@ database:
 
 test:
   override:
-    - docker-compose up ${DISTROS[0]}
+    - docker-compose up ${DISTRO_0}
   post:
-    - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/${DISTROS[0]}
+    - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/${DISTRO_0}
     - ls -l ${CIRCLE_ARTIFACTS}
