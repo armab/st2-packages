@@ -33,8 +33,7 @@ dependencies:
     #- if [[ -e ~/docker/postgres.tar ]]; then docker load -i ~/docker/postgres.tar; fi
     #- if [[ -e ~/docker/mongo.tar ]]; then docker load -i ~/docker/mongo.tar; fi
     #- if [[ -e ~/docker/rabbitmq:management.tar ]]; then docker load -i ~/docker/rabbitmq:management.tar; fi
-    - docker-compose pull `cat ~/DISTRO`:
-      parallel: true
+    - docker-compose pull `cat ~/DISTRO`
     #- docker save postgres > ~/docker/postgres.tar
     #- docker save mongo > ~/docker/mongo.tar
     #- docker save rabbitmq:management > ~/docker/rabbitmq:management.tar
