@@ -1,6 +1,7 @@
 machine:
   environment:
-    DISTRO=(debian ubuntu centos7)
+    #DISTRO=(debian ubuntu centos7)
+    DISTRO=debian
   pre:
     - echo ${DISTRO[0]}
     - echo ${DISTRO[1]}
