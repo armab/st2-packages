@@ -24,3 +24,7 @@ database:
 test:
   override:
     - docker-compose up debian
+  post:
+    - echo $ARTIFACTS_PATH
+    - echo $CIRCLE_ARTIFACTS
+    - cp -R /tmp/st2-packages/tmp.*/* $CIRCLE_ARTIFACTS
