@@ -1,10 +1,8 @@
 machine:
   environment:
-    DISTROS:
-      - debian
-      - ubuntu
-      - centos7
+    DISTROS: (debian ubuntu centos7)
   pre:
+    - echo ${DISTROS}
     - echo ${DISTROS[0]}
     - echo ${DISTROS[1]}
     - echo ${DISTROS[2]}
