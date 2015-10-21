@@ -35,6 +35,6 @@ test:
   override:
     - docker-compose up ${DISTRO_0}
   post:
-    - docker save library/postgres > ~/docker/postgres.tar
+    - docker save postgres > ~/docker/postgres.tar
     - mkdir ${CIRCLE_ARTIFACTS}/${DISTRO_0}
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/${DISTRO_0}
