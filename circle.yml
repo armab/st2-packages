@@ -4,8 +4,6 @@ machine:
     - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.8.3-circleci'
     - sudo chmod 0755 /usr/bin/docker
     - sudo service docker start
-    - sudo service postgresql stop
-    - sudo service rabbitmq-server stop
 #  services:
 #    - docker
 
@@ -16,6 +14,12 @@ dependencies:
     - sudo -H pip install --upgrade pip
     - sudo -H pip install docker-compose
     - docker-compose version
+
+database:
+  override:
+    - sudo service postgresql stop
+    - sudo service rabbitmq-server stop
+    - sudo service mongodb stop
 
 test:
   override:
