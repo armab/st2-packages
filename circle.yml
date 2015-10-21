@@ -1,6 +1,6 @@
 machine:
   environment:
-    - DISTROS:
+    DISTROS:
       - debian
       - ubuntu
       - centos7
