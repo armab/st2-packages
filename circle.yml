@@ -31,5 +31,6 @@ test:
   override:
     - docker-compose up ${DISTRO_0}
   post:
+    - mkdir ${CIRCLE_ARTIFACTS}/${DISTRO_0}
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/${DISTRO_0}
-    - ls -l ${CIRCLE_ARTIFACTS}
+    - tree ${CIRCLE_ARTIFACTS}
