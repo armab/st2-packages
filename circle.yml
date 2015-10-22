@@ -22,22 +22,13 @@ machine:
     - sudo service mongodb stop
 
 dependencies:
-  cache_directories:
-    - ~/docker
   pre:
-    - mkdir -p ~/docker
-  override:
     - sudo -H pip install --upgrade pip
     - sudo -H pip install docker-compose
     - docker-compose version
-    - if [[ -e ~/docker/postgres.tar ]]; then docker load -i ~/docker/postgres.tar; fi
-    - if [[ -e ~/docker/mongo.tar ]]; then docker load -i ~/docker/mongo.tar; fi
-    - if [[ -e ~/docker/rabbitmq:management.tar ]]; then docker load -i ~/docker/rabbitmq:management.tar; fi
+  override:
     - docker-compose pull `cat ~/DISTRO`:
         parallel: true
-    - docker save postgres > ~/docker/postgres.tar
-    - docker save mongo > ~/docker/mongo.tar
-    - docker save rabbitmq:management > ~/docker/rabbitmq:management.tar
 
 test:
   override:
@@ -46,4 +37,3 @@ test:
   post:
     - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
-
