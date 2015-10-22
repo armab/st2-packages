@@ -19,8 +19,8 @@ build:
     - MISTRAL_RELEASE=1
     - POSTGRES_USER=mistral
     - POSTGRES_PASSWORD=StackStorm
-    - BUILDHOST=packagingenv
-    - TESTHOSTS=droneunit
+    - BUILDHOST=bwheezy
+    - TESTHOSTS=iwheezy
   commands:
     - ./.drone/build.sh
 
