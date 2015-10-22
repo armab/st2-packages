@@ -50,4 +50,4 @@ deployment:
   test:
     branch: circle-ci
     commands:
-      - echo 'Test'
+      - echo 'This command is executed after all builds succeeded for circle-ci branch'
