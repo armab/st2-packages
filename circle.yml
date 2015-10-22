@@ -46,3 +46,4 @@ test:
   post:
     - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
+
