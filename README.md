@@ -69,3 +69,4 @@ docker-compose run ubuntu
 
 * Author:: StackStorm (st2-dev) (<info@stackstorm.com>)
 * Author:: Denis Baryshev (<dennybaa@gmail.com>)
+
