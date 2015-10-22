@@ -23,3 +23,18 @@ build:
     - TESTHOSTS=droneunit
   commands:
     - ./.drone/build.sh
+
+compose:
+  bwheezy:
+    image: quay.io/stackstorm/packagingenv:wheezy
+  iwheezy:
+    image: quay.io/dennybaa/droneunit:wheezy
+  rabbit:
+    image: rabbitmq:management
+  mongodb:
+    image: mongo
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=mistral
+      - POSTGRES_PASSWORD=StackStorm
