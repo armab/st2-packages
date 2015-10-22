@@ -47,3 +47,7 @@ deployment:
     branch: staging
     commands:
       - echo 'Deploy somewhere else'
+  test:
+    branch: circle-ci
+    commands:
+      - echo 'Test'
