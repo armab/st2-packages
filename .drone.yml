@@ -3,7 +3,7 @@ clone:
   recursive: true
 
 build:
-  image: quay.io/dennybaa/droneruby
+  image: quay.io/stackstorm/packagingenv:wheezy
   privileged: true
   environment:
     - DEBUG=1
@@ -19,7 +19,7 @@ build:
     - MISTRAL_RELEASE=1
     - POSTGRES_USER=mistral
     - POSTGRES_PASSWORD=StackStorm
-    - BUILDHOST=bwheezy
+    - BUILDHOST=localhost
     - TESTHOSTS=iwheezy
   commands:
     - ./.drone/build.sh
@@ -29,7 +29,7 @@ compose:
     image: quay.io/stackstorm/packagingenv:wheezy
   iwheezy:
     image: quay.io/dennybaa/droneunit:wheezy
-  rabbit:
+  rabbitmq:
     image: rabbitmq:management
   mongodb:
     image: mongo
