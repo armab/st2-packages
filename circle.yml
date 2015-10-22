@@ -37,3 +37,13 @@ test:
   post:
     - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
+
+deployment:
+  bintray: # just a label; label names are completely up to you
+    branch: master
+    commands:
+      - echo "All builds succeeded! Let's deploy artifacts somewhere"
+  staging:
+    branch: staging
+    commands:
+      - echo 'Deploy somewhere else'
