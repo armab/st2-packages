@@ -10,6 +10,7 @@ build:
     - /usr/bin/docker:/usr/bin/docker
     - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
+    - pwd
     - ls -l
     - docker-compose up $$DISTRO
 
