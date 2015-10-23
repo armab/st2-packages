@@ -10,4 +10,4 @@ build:
     - /usr/bin/docker:/usr/bin/docker
     - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - docker compose up debian
+    - docker-compose up debian
