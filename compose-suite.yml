@@ -2,6 +2,7 @@
 suite:
   working_dir: /root/workdir
   entrypoint: ["/bin/bash", "/root/workdir/.drone/build.sh"]
+  #entrypoint: ["/bin/bash", "/root/workdir/.drone/build.sh"]
   environment:
     - DEBUG=1
     - COMPOSE=1
