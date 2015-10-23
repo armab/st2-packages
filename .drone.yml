@@ -5,6 +5,7 @@ clone:
 build:
   image: quay.io/dennybaa/droneruby
   privileged: true
+  net: bridge
   environment:
     - DEBUG=1
     - ST2_GITURL=https://github.com/dennybaa/st2
