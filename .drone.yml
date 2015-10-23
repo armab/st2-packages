@@ -1,5 +1,5 @@
 clone:
-  depth: 50
+  depth: 1
   recursive: true
 
 build:
@@ -8,7 +8,12 @@ build:
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
+    - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    - chmod +x /usr/local/bin/docker-compose
-    - docker-compose up debian
+    - docker-compose up $$DISTRO
+
+matrix:
+  DISTRO:
+    - debian
+    - ubuntu
+    - centos7
