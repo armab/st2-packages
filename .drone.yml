@@ -5,56 +5,9 @@ clone:
 build:
   image: quay.io/dennybaa/droneruby
   privileged: true
-  net: host
-  environment:
-    - DEBUG=1
-    - ST2_GITURL=https://github.com/dennybaa/st2
-    - ST2_GITREV=fixate-reqs-update
-    - ST2_WAITFORSTART=20
-    - ST2_TESTMODE=
-    - ST2_BUILDLIST=
-    - MISTRAL_ENABLED=
-    - MISTRAL_GITURL=https://github.com/StackStorm/mistral
-    - MISTRAL_GITREV=st2-0.13.2
-    - MISTRAL_VERSION=2015.2
-    - MISTRAL_RELEASE=1
-    - POSTGRES_USER=mistral
-    - POSTGRES_PASSWORD=StackStorm
-    - BUILDHOST=bwheezy
-    - TESTHOSTS=iwheezy
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
     - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - docker ps
-    - cat /etc/hosts
-    - apt-get install -y net-tools
-    - netstat -lan
-    - ping -c 4 mongodb
-    #- docker-compose version || exit 0
-    - ./.drone/build.sh
-
-compose:
-  bwheezy:
-    image: quay.io/stackstorm/packagingenv:wheezy
-    pull: true
-    net: host
-#    net: bridge
-#  iwheezy:
-#    image: quay.io/dennybaa/droneunit:wheezy
-#  rabbitmq:
-#    image: rabbitmq:management
-  mongodb:
-    image: mongo
-    pull: true
-    net: host
-    environment:
-      - DOCKER_HOST=mongodb
-#    ports:
-#      - "27017:27017"
-#  postgres:
-#    image: postgres
-#    environment:
-#      - POSTGRES_USER=mistral
-#      - POSTGRES_PASSWORD=StackStorm
+    - docker compose up debian
