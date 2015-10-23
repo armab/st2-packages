@@ -3,7 +3,7 @@ clone:
   recursive: true
 
 build:
-  image: jpetazzo/dind
+  image: docker:dind
   privileged: true
   net: bridge
   #volumes:
@@ -11,10 +11,10 @@ build:
     #- /usr/bin/docker:/usr/bin/docker
     #- /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - apt-get update && apt-get install -y -q curl
-    - curl -L https://get.docker.com/builds/Linux/x86_64/docker-1.7.1 > /usr/local/bin/docker
-    - chmod +x /usr/local/bin/docker
-    - docker -d &
+#    - apt-get update && apt-get install -y -q curl
+#    - curl -L https://get.docker.com/builds/Linux/x86_64/docker-1.7.1 > /usr/local/bin/docker
+#    - chmod +x /usr/local/bin/docker
+#    - docker -d &
     - curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
     - chmod +x /usr/local/bin/docker-compose
     - docker version
