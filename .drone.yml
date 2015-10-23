@@ -22,7 +22,8 @@ build:
     - BUILDHOST=bwheezy
     - TESTHOSTS=iwheezy
   commands:
-    - echo 123
+    - ip addr
+    - ping -c 4 bwheezy
     #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
     #- ./.drone/build.sh
