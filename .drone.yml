@@ -10,10 +10,10 @@ build:
     - /usr/bin/docker:/usr/bin/docker
     - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - sleep 90000
     - pwd
     - echo $DRONE_DIR
     - ls -l
+    - sleep 90000
     - docker-compose up $$DISTRO
 
 matrix:
