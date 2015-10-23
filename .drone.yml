@@ -3,7 +3,7 @@ clone:
   recursive: true
 
 build:
-  image: debian:latest
+  image: jpetazzo/dind
   privileged: true
   net: bridge
   #volumes:
