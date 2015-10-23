@@ -5,7 +5,6 @@ clone:
 build:
   image: quay.io/dennybaa/droneruby
   privileged: true
-  net: bridge
   environment:
     - DEBUG=1
     - ST2_GITURL=https://github.com/dennybaa/st2
@@ -25,13 +24,12 @@ build:
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /usr/bin/docker:/usr/bin/docker
+    - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - ip addr
     - docker ps
     - cat /etc/hosts
     - apt-get install -y net-tools
     - netstat -lan
-    #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
     - ./.drone/build.sh
 
@@ -46,7 +44,6 @@ compose:
 #    image: rabbitmq:management
   mongodb:
     image: mongo
-    privileged: true
     pull: true
 #    net: bridge
 #    ports:
