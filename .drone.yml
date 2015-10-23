@@ -31,13 +31,15 @@ build:
     - cat /etc/hosts
     - apt-get install -y net-tools
     - netstat -lan
+    - ping -c 4 mongodb
     #- docker-compose version || exit 0
     - ./.drone/build.sh
 
 compose:
-#  bwheezy:
-#    image: quay.io/stackstorm/packagingenv:wheezy
-#    pull: true
+  bwheezy:
+    image: quay.io/stackstorm/packagingenv:wheezy
+    pull: true
+    net: host
 #    net: bridge
 #  iwheezy:
 #    image: quay.io/dennybaa/droneunit:wheezy
@@ -47,6 +49,8 @@ compose:
     image: mongo
     pull: true
     net: host
+    environment:
+      - DOCKER_HOST=mongodb
 #    ports:
 #      - "27017:27017"
 #  postgres:
