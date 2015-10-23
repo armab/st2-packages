@@ -22,6 +22,7 @@ build:
     - BUILDHOST=bwheezy
     - TESTHOSTS=iwheezy
   commands:
+    - echo 123
     - ping -c 4 packagingenv || exit 0
     - ping -c 4 bwheezy || exit 0
     - ping -c 4 iwheezy || exit 0
