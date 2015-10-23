@@ -2,21 +2,6 @@ clone:
   depth: 50
   recursive: true
 
-compose:
-  bwheezy:
-    image: quay.io/stackstorm/packagingenv:wheezy
-  iwheezy:
-    image: quay.io/dennybaa/droneunit:wheezy
-  rabbitmq:
-    image: rabbitmq:management
-  mongodb:
-    image: mongo
-  postgres:
-    image: postgres
-    environment:
-      - POSTGRES_USER=mistral
-      - POSTGRES_PASSWORD=StackStorm
-
 build:
   image: quay.io/dennybaa/droneruby
   privileged: true
@@ -41,3 +26,18 @@ build:
     #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
     #- ./.drone/build.sh
+
+compose:
+  bwheezy:
+    image: quay.io/stackstorm/packagingenv:wheezy
+  iwheezy:
+    image: quay.io/dennybaa/droneunit:wheezy
+  rabbitmq:
+    image: rabbitmq:management
+  mongodb:
+    image: mongo
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=mistral
+      - POSTGRES_PASSWORD=StackStorm
