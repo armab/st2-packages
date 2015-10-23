@@ -31,6 +31,8 @@ build:
 compose:
   bwheezy:
     image: quay.io/stackstorm/packagingenv:wheezy
+    pull: true
+    net: bridge
   iwheezy:
     image: quay.io/dennybaa/droneunit:wheezy
   rabbitmq:
