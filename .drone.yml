@@ -29,7 +29,7 @@ build:
     - ip addr
     - docker ps
     - cat /etc/hosts
-    - ping -c 4 mongo
+    - netstat -lan
     #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
     - ./.drone/build.sh
