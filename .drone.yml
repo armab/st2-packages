@@ -23,6 +23,7 @@ build:
     - TESTHOSTS=iwheezy
   commands:
     - ip addr
+    - docker ps
     - ping -c 4 mongo
     #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
