@@ -10,4 +10,5 @@ build:
     - /usr/bin/docker:/usr/bin/docker
     - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
+    - pip install docker-compose
     - docker-compose up debian
