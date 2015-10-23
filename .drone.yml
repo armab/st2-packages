@@ -45,7 +45,9 @@ compose:
 #    image: rabbitmq:management
   mongodb:
     image: mongo
+    privileged: true
     pull: true
+    net: bridge
 #  postgres:
 #    image: postgres
 #    environment:
