@@ -48,9 +48,9 @@ compose:
     image: mongo
     privileged: true
     pull: true
-    net: bridge
-    ports:
-      - "27017:27017"
+#    net: bridge
+#    ports:
+#      - "27017:27017"
 #  postgres:
 #    image: postgres
 #    environment:
