@@ -23,20 +23,20 @@ build:
     - TESTHOSTS=iwheezy
   commands:
     - ip addr
-    - ping -c 4 bwheezy
+    - ping -c 4 mongo
     #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
     #- ./.drone/build.sh
 
 compose:
-  bwheezy:
-    image: quay.io/stackstorm/packagingenv:wheezy
-    pull: true
-    net: bridge
-  iwheezy:
-    image: quay.io/dennybaa/droneunit:wheezy
-  rabbitmq:
-    image: rabbitmq:management
+#  bwheezy:
+#    image: quay.io/stackstorm/packagingenv:wheezy
+#    pull: true
+#    net: bridge
+#  iwheezy:
+#    image: quay.io/dennybaa/droneunit:wheezy
+#  rabbitmq:
+#    image: rabbitmq:management
   mongodb:
     image: mongo
   postgres:
