@@ -21,6 +21,9 @@ build:
     - POSTGRES_PASSWORD=StackStorm
     - BUILDHOST=bwheezy
     - TESTHOSTS=iwheezy
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
   commands:
     - ip addr
     - docker ps
