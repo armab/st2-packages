@@ -40,8 +40,8 @@ compose:
   mongodb:
     image: mongo
     pull: true
-  postgres:
-    image: postgres
-    environment:
-      - POSTGRES_USER=mistral
-      - POSTGRES_PASSWORD=StackStorm
+#  postgres:
+#    image: postgres
+#    environment:
+#      - POSTGRES_USER=mistral
+#      - POSTGRES_PASSWORD=StackStorm
