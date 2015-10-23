@@ -29,6 +29,7 @@ build:
     - ip addr
     - docker ps
     - cat /etc/hosts
+    - apt-get install -y net-tools
     - netstat -lan
     #- ping -c 4 rabbitmq || exit 0
     #- docker-compose version || exit 0
