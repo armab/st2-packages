@@ -10,6 +10,4 @@ build:
     - /usr/bin/docker:/usr/bin/docker
     - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
   commands:
-    - curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-    - chmod +x /usr/local/bin/docker-compose
     - docker-compose up debian
