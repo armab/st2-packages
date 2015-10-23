@@ -39,6 +39,7 @@ compose:
 #    image: rabbitmq:management
   mongodb:
     image: mongo
+    pull: true
   postgres:
     image: postgres
     environment:
