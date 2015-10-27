@@ -19,7 +19,9 @@ script:
   - ./.drone/build.sh
 services:
   - quay.io/stackstorm/packagingenv:wheezy
-  - quay.io/dennybaa/droneunit:wheezy
+  # can't start because we can't specify `command: /usr/sbin/sshd -D`
+  #- quay.io/dennybaa/droneunit:wheezy
+  - quay.io/dennybaa/droneunit:trusty-upstart
   - rabbitmq
   - mongodb
   - postgres
