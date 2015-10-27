@@ -18,8 +18,8 @@ env:
 script:
   - ./.drone/build.sh
 services:
-  - quay.io/stackstorm/packagingenv:wheezy
-  - quay.io/dennybaa/droneunit:wheezy
+  - quay.io/stackstorm/packagingenv:trusty
+  - quay.io/dennybaa/droneunit:trusty-upstart
   - rabbitmq
   - mongodb
   - postgres
