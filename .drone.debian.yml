@@ -1,0 +1,25 @@
+image: quay.io/dennybaa/droneruby
+env:
+  - DEBUG=1
+  - ST2_GITURL=https://github.com/StackStorm/st2
+  - ST2_GITREV=master
+  - ST2_WAITFORSTART=20
+  - ST2_TESTMODE=
+  - ST2_BUILDLIST=
+  - MISTRAL_ENABLED=
+  - MISTRAL_GITURL=https://github.com/StackStorm/mistral
+  - MISTRAL_GITREV=st2-0.13.2
+  - MISTRAL_VERSION=2015.2
+  - MISTRAL_RELEASE=1
+  - POSTGRES_USER=mistral
+  - POSTGRES_PASSWORD=StackStorm
+  - BUILDHOST=packagingenv
+  - TESTHOSTS=droneunit
+script:
+  - ./.drone/build.sh
+services:
+  - quay.io/stackstorm/packagingenv:wheezy
+  - quay.io/dennybaa/droneunit:wheezy-sshd
+  - rabbitmq
+  - mongodb
+  - postgres
