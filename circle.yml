@@ -31,12 +31,13 @@ dependencies:
 #        parallel: true
 
 test:
-#  override:
+  override:
+    - echo $CIRCLE_NODE_INDEX
 #    - docker-compose up `cat ~/DISTRO`:
 #        parallel: true
-  post:
-    - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
-    - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
+#  post:
+#    - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
+#    - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
 
 deployment:
 #  release:
