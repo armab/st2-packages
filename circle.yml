@@ -39,10 +39,10 @@ test:
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
 
 deployment:
-  release:
-    tag: /v[0-9]+(\.[0-9]+)*/
-    commands:
-      - echo New tag: ${CIRCLE_TAG}
+#  release:
+#    tag: /v[0-9]+(\.[0-9]+)*/
+#    commands:
+#      - echo New tag: ${CIRCLE_TAG}
   bintray-deb:
     branch: master
     commands:
