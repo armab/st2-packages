@@ -60,11 +60,11 @@ deployment:
     tag: /v[0-9]+(\.[0-9]+)*/
     commands:
       - echo New tag: ${CIRCLE_TAG}
-  bintray:
-    branch: master
-    commands:
-      - echo bintray-deb
-      - echo bintray-rpm
-      - echo `cat ~/DISTRO`
-      - echo ${CIRCLE_NODE_INDEX}
-      - echo ${CIRCLE_TAG}
+#  bintray:
+#    branch: master
+#    commands:
+#      - echo bintray-deb
+#      - echo bintray-rpm
+#      - echo `cat ~/DISTRO`
+#      - echo ${CIRCLE_NODE_INDEX}
+#      - echo ${CIRCLE_TAG}
