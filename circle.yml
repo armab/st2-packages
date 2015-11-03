@@ -32,7 +32,8 @@ dependencies:
 
 test:
   override:
-    - echo $CIRCLE_NODE_INDEX
+    - echo $CIRCLE_NODE_INDEX:
+        parallel: true
 #    - docker-compose up `cat ~/DISTRO`:
 #        parallel: true
 #  post:
