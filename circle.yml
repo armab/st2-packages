@@ -26,13 +26,15 @@ dependencies:
     - sudo -H pip install --upgrade pip
     - sudo -H pip install docker-compose
     - docker-compose version
-#  override:
+  override:
+    - echo `cat ~/DISTRO`:
+        parallel: true
 #    - docker-compose pull `cat ~/DISTRO`:
 #        parallel: true
 
 test:
   override:
-    - echo $CIRCLE_NODE_INDEX:
+    - echo `cat ~/DISTRO`:
         parallel: true
 #    - docker-compose up `cat ~/DISTRO`:
 #        parallel: true
@@ -49,9 +51,7 @@ deployment:
     branch: master
     commands:
       - echo bintray-deb
+      - echo bintray-rpm
       - echo `cat ~/DISTRO`
-      - echo $CIRCLE_NODE_INDEX
-#  bintray-rpm:
-#    branch: master
-#    commands:
-#      - echo 'This command is executed after all builds succeeded for circle-ci branch'
+      - echo ${CIRCLE_NODE_INDEX}
+      - echo ${CIRCLE_TAG}
