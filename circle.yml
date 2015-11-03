@@ -59,12 +59,13 @@ deployment:
   release:
     tag: /v[0-9]+(\.[0-9]+)*/
     commands:
-      - echo New tag!
+      - echo Running release deploy
+      - echo ${CIRCLE_TAG}
+      - echo ${CIRCLE_BRANCH}
   development:
     branch: master
     commands:
-      - echo bintray-deb
-      - echo bintray-rpm
+      - echo Running development deploy
       - echo `cat ~/DISTRO`
-      - echo ${CIRCLE_NODE_INDEX}
       - echo ${CIRCLE_TAG}
+      - echo ${CIRCLE_BRANCH}
