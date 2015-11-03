@@ -45,13 +45,13 @@ deployment:
 #    tag: /v[0-9]+(\.[0-9]+)*/
 #    commands:
 #      - echo New tag: ${CIRCLE_TAG}
-  bintray-deb:
+  bintray:
     branch: master
     commands:
       - echo bintray-deb
       - echo `cat ~/DISTRO`
       - echo $CIRCLE_NODE_INDEX
-  bintray-rpm:
-    branch: master
-    commands:
-      - echo 'This command is executed after all builds succeeded for circle-ci branch'
+#  bintray-rpm:
+#    branch: master
+#    commands:
+#      - echo 'This command is executed after all builds succeeded for circle-ci branch'
