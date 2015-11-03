@@ -34,7 +34,20 @@ dependencies:
 
 test:
   override:
-    - echo `cat ~/DISTRO`:
+    -
+      ? |
+        case $CIRCLE_NODE_INDEX in
+        0)
+          exit 0
+        ;;
+        1)
+          exit 1
+        ;;
+        2)
+          exit 0
+        ;;
+        esac
+      :
         parallel: true
 #    - docker-compose up `cat ~/DISTRO`:
 #        parallel: true
