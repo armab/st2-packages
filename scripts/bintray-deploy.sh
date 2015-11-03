@@ -90,7 +90,6 @@ function check_package_exists() {
 
 function create_package() {
   echo "[DEBUG] Creating package ${PKG_NAME}..."
-  #search for a descriptor in the current folder or generate one on the fly
   data="{
   \"name\": \"${PKG_NAME}\",
   \"desc\": \"\",
