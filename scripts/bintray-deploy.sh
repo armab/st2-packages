@@ -45,7 +45,7 @@ function main() {
     # 20
     PKG_RELEASE=$(echo ${PKG} | awk -F_ '{print $2}' | awk -F- '{print $2}')
     # amd64
-    PKG_ARCH=${PKG##*.}
+    PKG_ARCH=$(echo ${PKG##*_} | awk -F. '{print $1}')
     # deb
     PKG_TYPE=${PKG##*.}
     #
