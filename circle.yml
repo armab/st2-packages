@@ -1,0 +1,57 @@
+machine:
+  pre:
+    - |
+      case $CIRCLE_NODE_INDEX in
+        0)
+          echo 'debian' > ~/DISTRO
+        ;;
+        1)
+          echo 'ubuntu' > ~/DISTRO
+        ;;
+        2)
+          echo 'centos7' > ~/DISTRO
+        ;;
+      esac
+    - sudo cp /home/ubuntu/.ssh/config /root/.ssh/config
+    - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.8.3-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+    - sudo service docker start
+  post:
+    - sudo service postgresql stop
+    - sudo service rabbitmq-server stop
+    - sudo service mongodb stop
+
+dependencies:
+  pre:
+    - sudo -H pip install --upgrade pip
+    - sudo -H pip install docker-compose
+    - docker-compose version
+#  override:
+#    - docker-compose pull `cat ~/DISTRO`:
+#        parallel: true
+
+test:
+  override:
+    - echo $CIRCLE_NODE_INDEX:
+        parallel: true
+#    - docker-compose up `cat ~/DISTRO`:
+#        parallel: true
+#  post:
+#    - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
+#    - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
+
+deployment:
+#  release:
+#    tag: /v[0-9]+(\.[0-9]+)*/
+#    commands:
+#      - echo New tag: ${CIRCLE_TAG}
+  bintray-deb:
+    branch: master
+    commands:
+      - echo bintray-deb
+      - echo `cat ~/DISTRO`
+      - echo $CIRCLE_NODE_INDEX
+  bintray-rpm:
+    branch: master
+    commands:
+      - echo 'This command is executed after all builds succeeded for circle-ci branch'
