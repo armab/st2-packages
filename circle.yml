@@ -27,15 +27,13 @@ dependencies:
     - sudo -H pip install docker-compose
     - docker-compose version
   override:
-    - docker-compose pull `cat ~/DISTRO`:
+    - docker-compose pull `cat ~/DISTRO`1:
         parallel: true
 
 test:
   override:
     - docker-compose up `cat ~/DISTRO`1:
         parallel: true
-#    - docker-compose up `cat ~/DISTRO`:
-#        parallel: true
   post:
     - mkdir ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
     - cp -R /tmp/st2-packages/tmp.*/* ${CIRCLE_ARTIFACTS}/`cat ~/DISTRO`
